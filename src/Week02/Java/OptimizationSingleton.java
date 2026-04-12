@@ -1,30 +1,22 @@
 package Week02.Java;
 
-public class LazySingleton {
+public class OptimizationSingleton {
 
     private static int COUNT = 0;
-    private static LazySingleton INSTANCE = null;
-    private static final LazySingleton FINAL_INSTANCE = new LazySingleton();
-    private static final LazySingleton GET_FINAL_INSTANCE = LazySingleton.getInstance();
+    private static OptimizationSingleton INSTANCE = null;
 
 
-    public static LazySingleton getInstance() {
+    public static synchronized OptimizationSingleton getInstance() {
         if (INSTANCE == null)
-            INSTANCE = new LazySingleton();
+            INSTANCE = new OptimizationSingleton();
         return INSTANCE;
     }
 
-    public static synchronized LazySingleton getInstanceOPT() {
-        if (INSTANCE == null)
-            INSTANCE = new LazySingleton();
-        return INSTANCE;
-    }
-
-    private LazySingleton() {
+    private OptimizationSingleton() {
         // ----------------------------------
 //        if(INSTANCE!=null)
 //            throw new RuntimeException();
-        LazySingleton.COUNT++;
+        OptimizationSingleton.COUNT++;
         //COUNT++;
 
     }
@@ -32,6 +24,6 @@ public class LazySingleton {
 
     @Override
     public String toString() {
-        return super.toString() + " - Singleton{} -> " + COUNT;
+        return super.toString() + " - OptimizationSingleton{} -> " + COUNT;
     }
 }

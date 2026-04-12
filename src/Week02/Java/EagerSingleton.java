@@ -1,37 +1,22 @@
 package Week02.Java;
 
-public class Singleton {
+public class EagerSingleton {
 
     private static int COUNT = 0;
-    private static Singleton INSTANCE = null;
-    private static final Singleton FINAL_INSTANCE = new Singleton();
-    private static final Singleton GET_FINAL_INSTANCE = Singleton.getInstance();
+    private static final EagerSingleton FINAL_INSTANCE = new EagerSingleton();
 
-
-    public static Singleton getInstance() {
-        if (INSTANCE == null)
-            INSTANCE = new Singleton();
-        return INSTANCE;
+    public static EagerSingleton getInstance() {
+        return FINAL_INSTANCE;
     }
 
-    public static synchronized Singleton getInstanceOPT() {
-        if (INSTANCE == null)
-            INSTANCE = new Singleton();
-        return INSTANCE;
-    }
 
-    private Singleton() {
-        // ----------------------------------
-//        if(INSTANCE!=null)
-//            throw new RuntimeException();
-        Singleton.COUNT++;
-        //COUNT++;
-
+    private EagerSingleton() {
+        EagerSingleton.COUNT++;
     }
 
 
     @Override
     public String toString() {
-        return super.toString() + " - Singleton{} -> " + COUNT;
+        return super.toString() + " - EagerSingleton{} -> " + COUNT;
     }
 }
