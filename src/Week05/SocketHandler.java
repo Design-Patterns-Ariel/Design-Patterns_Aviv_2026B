@@ -21,7 +21,6 @@ public class SocketHandler extends Thread {
         try {
             DataOutputStream out = new DataOutputStream(in.getOutputStream());
             BufferedReader inFromClient = new BufferedReader(new InputStreamReader(in.getInputStream()));
-            out.writeBytes("" + "\n");
 
             while (true) {
 

@@ -3,7 +3,7 @@ package Week03;
 import java.util.Arrays;
 import java.util.Random;
 
-public class Main {
+public class Test {
     static Random rd = new Random();
 
     static void main() {

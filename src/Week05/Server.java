@@ -1,6 +1,5 @@
 package Week05;
 
-import Week03.SocketHandler;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -13,12 +12,12 @@ public class Server {
 
     static void main() throws IOException {
         ServerSocket s = null;
-        Map<String, Week03.SocketHandler> clientMap = new HashMap<>();
+        Map<String, SocketHandler> clientMap = new HashMap<>();
 
 
         try {
-            s = new ServerSocket(3000);
-            System.out.println("Server is running on port 3000");
+            s = new ServerSocket(3005);
+            System.out.println("Server is running on port 3005");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

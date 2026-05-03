@@ -17,7 +17,7 @@ public class Client {
 
         Socket client = null;
         try {
-            client = new Socket("localhost", 3000);
+            client = new Socket("localhost", 3005);
             Scanner sc = new Scanner(System.in);
 
             DataOutputStream out = new DataOutputStream(client.getOutputStream());
