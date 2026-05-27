@@ -1,4 +1,4 @@
-package Week06;
+package Week07.Servers;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -10,28 +10,33 @@ public class SocketHandler extends Thread {
 
     private Socket in;
     private String nameId;
+    private final DataOutputStream out;
+    private final BufferedReader inFromClient;
 
-    public SocketHandler(Socket in) {
-
+    public SocketHandler(Socket in) throws IOException {
         this.in = in;
+        out = new DataOutputStream(in.getOutputStream());
+        inFromClient = new BufferedReader(new InputStreamReader(in.getInputStream()));
     }
 
     @Override
     public void run() {
         System.out.println(Thread.currentThread().getName());
         try {
-            DataOutputStream out = new DataOutputStream(in.getOutputStream());
-            BufferedReader inFromClient = new BufferedReader(new InputStreamReader(in.getInputStream()));
             while (true) {
 
                 String from = inFromClient.readLine();
                 System.out.println(from);
-                out.writeBytes("Hello" + "\n");
-
+                Server.broadcast(from, this);
             }
         } catch (IOException e) {
 
             System.out.println(e.getMessage());
         }
+    }
+
+
+    public void write(String msg) throws IOException {
+        out.writeBytes(msg + "\n");
     }
 }
