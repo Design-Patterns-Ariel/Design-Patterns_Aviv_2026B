@@ -1,4 +1,4 @@
-package Facade;
+package Week04.Facade;
 
 class Room implements Action {
 

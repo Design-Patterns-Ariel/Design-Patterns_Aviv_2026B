@@ -1,4 +1,4 @@
-package Prototype;
+package Week04.Prototype;
 
 import java.util.Stack;
 
